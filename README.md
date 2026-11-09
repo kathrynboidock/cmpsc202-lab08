@@ -54,7 +54,7 @@ Starting at Node $A$, trace Dijkstra's algorithm. Fill in the tracker table belo
 
 **Conceptual Question:**
 When we add a vertex to the "visited" set, why are we 100% certain we have found the absolute shortest path to that node? 
-> *Your answer here*
+> *We discovered all possible paths to that node and confirmed it has the smallest distance.*
 
 ---
 
@@ -68,16 +68,16 @@ Dijkstra's algorithm relies on an assumption about the weights. Let's see what h
 Trace Dijkstra's algorithm starting from Node $A$ to find the shortest path to Node $C$.
 
 1. Which node does Dijkstra's algorithm visit first after $A$?
-   > *Your answer here*
+   > *Node C*
 
 2. What will Dijkstra's algorithm declare as the shortest path to $C$, and what is its weight?
-   > *Your answer here*
+   > *Node A to Node C, which would have a weight of 1.*
 
-3. Look at the graph manually. What is the *actual* shortest path from $A$ to $C$, and what is its total weight? 
-   > *Your answer here*
+3. Look at the graph manually. What is the *actual* shortest path from $A$ to $C$, and what is its total weight?
+   > *Node A to Node B to Node C, which would have a weight of -3.*
 
 4. **The Trap:** Explain exactly *why* Dijkstra's algorithm failed to find the correct shortest path in this scenario.
-   > *Your answer here*
+   > *Once the algorithm finalizes the shortest path to a node, it doesn't re-evaluate it even if a shorter path is found later.*
 
 ---
 
