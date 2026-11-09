@@ -1,8 +1,9 @@
 # Lab 08: Navigating Weighted Graphs with Dijkstra's Algorithm
 
-Name(s): _______________________  
+Name(s): __Kathryn Boidock__  
 
 ## Introduction
+
 You are already familiar with Breadth-First Search (BFS) and Depth-First Search (DFS) for exploring graphs. However, what happens when all edges are not created equal? In this lab, we will explore Dijkstra's Algorithm, which allows us to find the shortest path between two vertices in a *weighted* graph.
 
 ---
@@ -14,14 +15,15 @@ BFS is excellent for finding the shortest path in an unweighted graph. Let's see
 ![Part 1 Graph](./part1.png)
 
 **Questions:**
-1. If you run a standard BFS starting at Node $A$, looking for Node $D$, which path will the BFS algorithm discover first? Why?
-   > *Your answer here*
 
-2. What is the total weight of the path BFS found? What is the total weight of the alternative path? 
-   > *Your answer here*
+1. If you run a standard BFS starting at Node $A$, looking for Node $D$, which path will the BFS algorithm discover first? Why?
+   > *The path that will be discovered first is the one with the fewest edges, reguardless of weight. This is becasue BF looks at all nodes at the same distance before moving to the next section. The shortest path from Node A to Node D is Node A to Node D.*
+
+2. What is the total weight of the path BFS found? What is the total weight of the alternative path?
+   > *The total weight of the path BFS found is 100. The total weight of the alternative path is 9.*
 
 3. How does the definition of "shortest path" change when moving from unweighted graphs to weighted graphs?
-   > *Your answer here*
+   > *When moving from one from the other, BFS we do not have to worry about weight so we can just look at the number of edges. In weighted graphs, we need to consider the sum of the weights along the path.*
 
 ---
 
@@ -32,19 +34,23 @@ Dijkstra's algorithm uses a greedy approach. It maintains a set of "visited" (fi
 ![Part 2 Graph](./part2.png)
 
 **Instructions:**
-Starting at Node $A$, trace Dijkstra's algorithm. Fill in the tracker table below. 
+Starting at Node $A$, trace Dijkstra's algorithm. Fill in the tracker table below.
+
 *   **Current Node:** The unvisited node with the smallest current distance.
+
 *   **Neighbors to Check:** The neighbors of the current node whose distances might need updating.
+
 *   **`dist` Array:** The current known shortest distance from $A$ to each node. Use $\infty$ for unreachable/unknown nodes.
+
 *   **`visited` Set:** The set of nodes that have been finalized and whose shortest distances are known.
 
 | Step | Current Node | Neighbors to Check | `dist` Map | `visited` Set | 
 | :--- | :--- | :--- | :--- | :--- | 
-| 0 | $A$ | $B$, $C$ | $A$:0, $B$:4, $C$:2 | { } | 
-| 1 | | | | | 
-| 2 | | | | | 
-| 3 | | | | | 
-| 4 | | | | | 
+| 0 | $A$ | $B$, $C$ | $A$:0, $B$:4, $C$:2 | { } |
+| 1 | $C$ | $B$, $D$, $E$ | $A$:0, $B$:3, $D$:10, $E$:12 | {A} |
+| 2 | $B$ | $D$ | $A$:0, $C$:2, $D$:8, $E$:12 | {A, C} |
+| 3 | $D$ | $E$ | $A$:0, $C$:2, $B$:3, $E$:10 | {A, C, B} |
+| 4 | $E$ | | $A$:0, $C$:2, $B$:3, $D$:8 | {A, C, B, D} |
 
 **Conceptual Question:**
 When we add a vertex to the "visited" set, why are we 100% certain we have found the absolute shortest path to that node? 
